@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+\title{CISC 102 (Fall 20)\\ Homework \#4: Functions $\;$   (20 Points) }
+\author{Student Name/ID:. . . . . . . .}
+\date{}
+
+
+\usepackage[left=2cm, right=3cm, top=1cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}						% for \bm -- bold almost everywhere
+\usepackage{mdwlist}					% for {itemize*}
+\usepackage{enumerate}
+\usepackage{xcolor,graphicx}
+\usepackage{relsize,etoolbox}
+\usepackage{tikz}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ab}[1]{\left[ #1 \right]}
+\newcommand{\rb}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pdif}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pdifm}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
+
+\renewcommand{\a}{\ensuremath{\mathcal{A}}}
+\renewcommand{\b}{\ensuremath{\mathcal{B}}}
+\newcommand{\bb}{\ensuremath{\mathbb{B}}}
+\newcommand{\ee}{\ensuremath{\mathbb{E}}}
+\newcommand{\f}{\ensuremath{\mathcal{F}}}
+\newcommand{\g}{\ensuremath{\mathcal{G}}}
+\newcommand{\h}{\ensuremath{\mathcal{H}}}
+\renewcommand{\l}{\ensuremath{\mathcal{L}}}
+\newcommand{\map}{\longrightarrow}
+\newcommand{\nn}{\ensuremath{\mathbb{N}}}
+\newcommand{\one}{\ensuremath{\mathbf{1}}}
+\newcommand{\p}{\ensuremath{\mathcal{P}}}
+\newcommand{\pp}{\ensuremath{\mathbb{P}}}
+\newcommand{\qq}{\ensuremath{\mathbb{Q}}}
+\newcommand{\rr}{\ensuremath{\mathbb{R}}}
+\newcommand{\zz}{\ensuremath{\mathbb{Z}}}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\newcommand{\var}{\mathrm{var}}
+
+\DeclareMathOperator{\argmax}{argmax}
+
+\begin{document}
+
+\maketitle
+
+\par\noindent Solutions are due before 11:59 PM on \textbf{October 20, 2020 }.
+
+
+\begin{enumerate}
+
+\item (2pts) \\
+Determine whether the mappings from   $ \mathbb{R}$ to $ \mathbb{R}$ shown below  are or are not functions, and explain your decision.
+\begin{enumerate}
+	\item $f(x) = 1/x$
+    \\This function is not a function from $\mathbb{R}$ to $\mathbb{R}$ since the function is not defined at $f(0) = 1/0$.
+	\item $f(x) = \sqrt{x}$
+    \\This function is also not a function from $\mathbb{R}$ to $\mathbb{R}$ since $f(x) = \sqrt{x}$ is only defined for nonnegative values of x and will only return their square root which will be positive. $\therefore$ this function would be a function of the domain and codomain of $\mathbb{R}^+$.
+\end{enumerate}
+
+
+\item  (2pts) \\Determine whether each of the following functions from $\mathbb{R}$ to $\mathbb{R}$ is a bijection, and explain your decision. HINT: Plotting these functions may help you with your decision.
+\begin{enumerate}
+	\item $f(x) = -x^2 + 2$
+    \\This function is not a bijection sine it is neither onto or one-to-one. It isn't one to one since, take for example and $x = 1$ and $x = -1$. $-(1)^2 + 2 = -(-1)^2 + 2 = 1$. It is also not onto since of the domain $\mathbb{R}$ to $\mathbb{R}$, the range of $f(x)$ is all the values that are $\{\,f(x)\mid f(x) \leq 2\,\}$. $\therefore$ this function is not a bijection.
+	\item  $f(x) = x^3 - x^2$
+    \\This function is not a bijection since it is onto, but not one-to-one. First off this function is onto since the function is defined everywhere from $\mathbb{R}$ to $\mathbb{R}$. On the other hand it is not one-to-one since some values of $f(x)$ are repeated. If we factor the function it will look like $x^2(x - 1)$, and if we look at those two factors, at $f(x) = 0$, $x = 0$ and $x = 1$.$\therefore$This function is not a bijection since it is only onto but not one-to-one.
+\end{enumerate}
+
+\item  (2pts) \\Suppose the function $f : A \rightarrow B$ is a bijection. What can you say about the values $|A|$ and $|B|$?
+    \\We can say that both $A$ and $B$ have the same cardinality. Since if it is one-to-one and onto, all the values of $a \in A$ have a unique value of $b \in B$ and vice versa.Take for example a function that is a bijection (since it can also be inverted) in the form of $f(x) = x^3$ from the domain and codomain of $\mathbb{R}$ to $\mathbb{R}$. Its range is $\mathbb{R}$, and it meets the condition stated above.$\therefore$We can conclude that the cardinality of A and B have to be equal for the function $f : A \rightarrow B$ to be a bijection.
+
+\item  (2pts) \\Let \(f:\lbrace{1,2,3,4,5,6}\rbrace \rightarrow \lbrace{red,yellow,beige, green,umber,teal}\rbrace\) be a one-to-one function. Prove, by contradiction,  that \(f\) is a bijection.
+    \\If we prove this by contradiction then we are assuming that the function is not a bijection. For the function to not be a bijection it must not be onto, one-to-one, or neither. But since this function is already a one-to-one, and the cardinality of both sets is equal, then each element of set $\{1,2,3,4,5,6\}$ will have a unique element in set $\{red,yellow,beige, green,umber,teal\}$. With this we have proven that this function is one-to-one, and also onto, proving the contradiction false.
+
+\item  (2pts)
+Let \(A = \lbrace{1,2,3,4}\rbrace\) \\
+Let \(B = \lbrace{a,b}\rbrace\) \\
+Let \(C = \lbrace{curling,hockey,table\text{-}tennis}\rbrace\)
+\begin{enumerate}
+\item  How many {\it  one-to-one } functions are there from \(C\) to \(A\)?
+\\From C to A we see that C has 3 elements and A has 4 elements. The first element, "curling", can be mapped out to any of the elements in A which is 4. The second element, "hockey", Has to be mapped out to the 3 remaining elements. And finally, "table\text{-}tennis", the last element, has to be mapped out to the last 2 remaining elements of A. If we multiply this out, $2 \times 3 \times 4 = 24$. $\therefore$there are 24 different one-to-one functions from C to A.
+\item  How many {\it  onto }   functions are there from \(C\) to \(B\)?\\
+(Hint: count the non-onto functions)
+\\For this function from C to B, there is a total number of functions of $2^3=8$. And if we are looking for the non-onto functions, in which still all the elements of C are mapped to one element in B, then there are only 2 non-onto functions from C to B. So now for the total number of onto functions from C to B is $8 - 2 = 6$. $\therefore$ there are 6 onto functions from C to B.
+\\
+\end{enumerate}
+
+\item  (4pts) \\Decide for each of the following expressions: Is it a function? If so,
+
+\centerline{
+	\begin{tabular}{l@{\qquad}l}
+		(i) what is its domain, codomain, and image? & (ii) is it injective? (why or why not)\\
+		(iii) is it surjective?  (why or why not)&(iv) is it invertible?  (why or why not)
+\end{tabular}}
+\begin{enumerate}
+	\item $f:$  $\mathbb{R}$  $\rightarrow$  $ \mathbb{R}$  defined by  $x \mapsto x^3$
+    \\First off this relation is a function.
+    \\(i) Domain = $\mathbb{R}$
+    \\   Codomain = $\mathbb{R}$
+    \\   Image = $\mathbb{R}$
+    \\(ii) This function is injective since each value from the domain has a unique value of the codomain.
+    \\(iii) Like said in (ii), each value in the domain has its own unique value in the codomain, which also implies the opposite.
+    \\(iv) this function is invertible since it is both injective and surjective, which means in is bijective.
+	\item $f: \mathbb{R} \times \mathbb{Z} \rightarrow \mathbb{Z} \textrm{ defined by }   (r,z) \rightarrow \lceil r \rceil * z$
+\\(i)Domain = $\mathbb{R} \times \mathbb{Z}$
+\\Codomain = $\mathbb{Z}$
+\\Image = $\mathbb{Z}$
+\\(ii) This function is not injective. Lets say r is any number greater than 0 but less than 1, and z is 1. If that's the case then the image of all these values will be 1, since the ceiling function returns the next greatest integer from a rational number. Therefore many values of r (in our example between grater than 0 and less than 1 and z = 1), the image of this will always be 1.
+\\(iii) This function is surjective, since the function can equal any value in the codomain if the values of r and z are the correct ones.
+\\(iv) Since this function is not injective, and is surjective, it is not invertible since it needs to be both injective and surjective.
+\end{enumerate}
+
+
+
+\item  (2pts)\\ Let $f$ be a function from the set $A$ to the set $B$. Let $S$ and $T$ be subsets of $A$. Show that
+\begin{enumerate}
+	\item $f(S \cup T) = f(S) \cup f(T)$:
+    \\Let $f(y) = x$
+    \\(1) $x \in f(S \cup T)$
+    \\(2) $y \in S \lor y \in T$
+    \\(3) $f(y) \in f(S) \lor f(y) \in f(T)$ ($f(s)$ has all elements that are images of element of S)
+    \\(Same with respect to $f(T)$)
+    \\(4) $x \in f(S) \lor x \in f(T)$
+    \\(5) $x \in f(S) \cup f(T)$
+    \\(6) $f(S \cup T) \subseteq f(S) \cup f(T)$
+    \\(7) $x \in f(S) \lor \in f(T)$
+    \\(8) $y \in S \lor y \in T$
+    \\(9) $y \in S \cup T$
+    \\(10) $f(y) \in f(S \cup T)$
+    \\(11) $x \in f(S \cup T)$
+    \\(12) $f(S) \cup f(T) \subseteq f(S \cup T)$
+    \\$\therefore$ since $f(S) \cup f(T) \subseteq f(S \cup T)$ and $f(S \cup T) \subseteq f(S) \cup f(T)$
+    \\$\therefore f(S \cup T) = f(S) \cup f(T)$
+	\\\item $f(S \cap T) \subseteq f(S) \cap f(T)$.
+    \\Let $f(y) = x$
+    \\(1) $x \in (S \cap T)$
+    \\(2) $y \in S \land y \in T$
+    \\(3) $f(y) \in f(S) \land f(y) \in f(T)$
+    \\(4) $x \in f(S) \land x \in f(T)$
+    \\(5) $x \in (f(S) \cap f(T))$
+    \\(6) $f(S \cup T) \subseteq f(S) \cup f(T)$
+    \\(7)
+\end{enumerate}
+
+\item  (1pts) find the inverse function of $f(x)=x^3+1$
+\\$y = x^3 + 1 \rightarrow y - 1 = x^3 \rightarrow \sqrt[3]{y - 1} = x$
+\\$\therefore f^{-1} (y) = \sqrt[3]{y - 1}$
+
+\item  (2pts) \\
+Suppose that $g$ is a function from $A$ to $B$ and f is a function
+from $B$ to $C$.
+\begin{enumerate}
+	\item Show that if both f and g are one-to-one functions,
+	then $f \circ g$ is also one-to-one.
+    \\$f$ is one-to-one if $f(x) = f(y)$, then $x = y$
+    \\$g$ is one-to-one if $g(x) = g(y)$, then $x = y$
+    \\$f(g(a)) = f(g(b))$
+    \\Since $f$ is one-to-one: $g(a) = g(b)$
+    \\Since $g$ is one-to-one: $a = b$
+    \\$\therefore$ this proves that $f \circ g$ is one-to-one.
+	\item Show that if both $f$ and $g$ are onto functions, then $f \circ g$
+	is also onto.
+    \\$f$ is onto if $\forall c \in C \exists b \in B$: $f(b) = c$
+    \\$g$ is onto if $\forall b \in B \exists a \in A$: $g(a) = b$
+    \\Let $f(y) = x $ and $g(z) = y$
+    \\$(f \circ g)(z) = f(g(z)) = f(y) = x$
+    \\$\therefore$ $f \circ g$ is onto.
+\end{enumerate}
+
+\item  (1pts) \\
+Find  $f \circ g$  and  $g \circ f$, where $f(x) = x^2 + 1$ and $g(x) = x + 2$,
+are functions from $\mathbb{R}$ to $\mathbb{R}$.
+\\$f \circ g = (x + 2)^2 + 1 = x^2 + 4x + 4 + 1 = x^2 + 4x + 5$
+\\$\therefore f \circ g = x^ + 4x + 5$
+\\$g \circ f = (x^2 + 1) + 2 = x^2 + 3$
+\\$\therefore g \circ f = x^2 + 3$
+
+
+%%%%%%%%%%%%
+\end{enumerate}
+\end{document} 

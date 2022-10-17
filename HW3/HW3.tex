@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+\title{CISC 102 (Fall 20)\\ Homework \#3: Proofs $\;$   (24 Points) }
+\author{Student Name/ID:. . . . . . . .}
+\date{}
+
+
+\usepackage[left=2cm, right=3cm, top=1cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}						% for \bm -- bold almost everywhere
+\usepackage{mdwlist}					% for {itemize*}
+\usepackage{enumerate}
+\usepackage{xcolor,graphicx}
+\usepackage{relsize,etoolbox}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ab}[1]{\left[ #1 \right]}
+\newcommand{\rb}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pdif}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pdifm}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
+
+\renewcommand{\a}{\ensuremath{\mathcal{A}}}
+\renewcommand{\b}{\ensuremath{\mathcal{B}}}
+\newcommand{\bb}{\ensuremath{\mathbb{B}}}
+\newcommand{\ee}{\ensuremath{\mathbb{E}}}
+\newcommand{\f}{\ensuremath{\mathcal{F}}}
+\newcommand{\g}{\ensuremath{\mathcal{G}}}
+\newcommand{\h}{\ensuremath{\mathcal{H}}}
+\renewcommand{\l}{\ensuremath{\mathcal{L}}}
+\newcommand{\map}{\longrightarrow}
+\newcommand{\nn}{\ensuremath{\mathbb{N}}}
+\newcommand{\one}{\ensuremath{\mathbf{1}}}
+\newcommand{\p}{\ensuremath{\mathcal{P}}}
+\newcommand{\pp}{\ensuremath{\mathbb{P}}}
+\newcommand{\qq}{\ensuremath{\mathbb{Q}}}
+\newcommand{\rr}{\ensuremath{\mathbb{R}}}
+\newcommand{\zz}{\ensuremath{\mathbb{Z}}}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\newcommand{\var}{\mathrm{var}}
+
+\DeclareMathOperator{\argmax}{argmax}
+
+\begin{document}
+
+\maketitle
+
+\par\noindent Solutions are due before 11:59 PM on \textbf{Friday  Midnight October 10, 2020 }.
+
+
+\begin{enumerate}
+
+\item (2 pts)
+Find the argument form for the following argument and
+determine whether it is valid. Can we conclude that the
+conclusion is true if the premises are true?\\
+If George does not have eight legs, then he is not a
+spider.\\
+George is a spider.\\
+\rule{8cm}{.1pt}\\
+$\therefore$ George has eight legs.\\
+\\Let p be "George does not have eight legs" and let q be "He is not a spider"
+\\The conclusion is $(( p \rightarrow q)\land \lnot q)\rightarrow \lnot p$ using modus tollens.
+
+
+\item (2 pts)
+What rules of inference are used in this famous argument?
+“All men are mortal. Socrates is a man. Therefore,
+Socrates is mortal.”\\
+\\Let M(x) be "x is mortal" and let N(x) be "x is a man".
+\\1. $\forall x (N(x) \rightarrow M(x))$ (Premise 1)
+\\2. $N(Socrates) \rightarrow M(Socrates)$ (Universal instantiation from (1))
+\\3. N(Socrates) (Premise 2)\\
+\rule{1.5cm}{.1pt}
+\\$\therefore M(Socrates)$ (Modus ponens from (2) and (3))
+\\Therefore the rules of inference used were universal instantiation and modus ponens.
+
+\item (2 pts)
+Use rules of inference to show that the hypotheses “If it
+does not rain or if it is not foggy, then the sailing race will
+be held and the lifesaving demonstration will go on,” “If
+the sailing race is held, then the trophy will be awarded,”
+and “The trophy was not awarded” imply the conclusion
+“It rained.”\\
+\\Let p be "It rains", let q be "It is foggy", let r be "Sailing will be held", let s be "lifesaving demonstration will go on", let t be "The trophy is awarded".
+\\1. $(\lnot p \lor \lnot q) \rightarrow (r \land s)$ (Premise 1)
+\\2. $r \rightarrow t$ (Premise 2)
+\\3. $\lnot t$ (Premise 3)
+\\4. $\lnot r$ (Modus tollens from (2) and (3))
+\\5. $\lnot (r \land s) \rightarrow \lnot (\lnot p \lor \lnot q)$ (Contrapositive of (1))
+\\6. $(\lnot r \lor \lnot s) \rightarrow (p \land q)$ (De Morgan's Laws with (5))
+\\7. $(\lnot r \lor \lnot s)$ (Addition of (6))
+\\8. $(p \land q)$ (Modus ponens with (6) and (7))
+\\9. p (Simplification of (8))
+\\$\therefore$It rained.
+
+
+\item (2 pts) Prove, or find a counterexample: the sum of the squares of two consecutive positive integers is odd.\\
+\\Prove:
+\\First we have two consecutive integers, "x" and "y". Since they are consecutive integers, $y = x + 1$, so it narrows out integers to "x" and "x + 1". So we now have $x^2 + (x + 1)^2$. This then equals to $2x^2 + 2x + 1$, and when we factor it we get $2(x^2 + x) + 1$ which will always return an odd integer.
+
+\item (2 pts) Prove that if {\it  n }  is any integer then \(n^3+2n^2+n+4\) is even \\
+Hint: do two cases: one for when {\it  n }  is even, and one for when {\it  n }  is odd.
+\\Case 1 (n is even):
+\\$n = 2k$
+\\$=(2k)^3 + 2(2k)^2 + 2k + 4$  (Sub in 2k for n)
+\\$=8k^3 + 8k^2 + 2k + 4$
+\\$=2(4k^3 + 4k^2 + k + 2)$  (Factor out 2)
+\\$\therefore$ If n is even then $n^3 + 2n^2 + n + 4$ is also even.\\
+\\Case 2(n is odd):
+\\$n = 2k - 1$
+\\$=(2k - 1)^3 + 2(2k - 1)^2 + 2k + 1 + 4$  (Sub in 2k - 1 for n)
+\\$=8k^3 - 12k^2 + 6k - 1 + 8k^2 - 8k + 2 + 2k - 1 + 4$
+\\$=8k^3 - 4k^2 + 4$
+\\$=2(4k^3 - 2k^2 + 2)$  (Factor out 2)
+\\$\therefore$If n is odd then $n^3 + 2n^2 + n + 4$ is still even.\\
+\\$\therefore$We can conclude that for any integer n, $n^3 + 2n^2 + n + 4$ will always be even.
+
+
+
+
+
+
+
+\item (4 pts)
+ Prove by contradiction the following. For all rational
+number $x$ and irrational number $y$, the sum of $x$ and $y$ is
+irrational.\\
+\\Since we are proving this by contradiction, the sum of these numbers is rational. Let's say that since "x" is irrational and "y" is rational. so $x + y$ is rational. Since y is rational $-y$ is rational. So $(x + y) + (-y) = x$ which is rational, this contradicts our hypothesis that "x" is irrational. $\therefore$ We have proven that x + y (if x is irrational and y is rational) that it produces a irrational number, which we proved by contradiction.
+
+\item (2 pts) Prove the proposition $P(1)$, where $P(n)$ is the proposition
+“If n is a positive integer, then $n^2 \geq n.$” What kind of
+proof did you use?\\
+\\In this case we can use Exhaustive Proof:
+\\Let $n = 1,7,10$
+\\1. $(1)^2 \geq 1 \rightarrow 1 \geq 1$
+\\2. $(7)^2 \geq 7 \rightarrow 49 \geq 7$
+\\3. $(10)^2 \geq 10 \rightarrow 100 \geq 10$
+\\$\therefore$ We can see the general trend, we could keep on testing this proposition with more values of n but they will result in the same outcomes as the ones tested above.\\
+
+
+\item (2 pts) Prove, by contradiction,  that at least three of any 25 days chosen must fall
+in the same month of the year.\\
+\\In a year there are 12 months, and it is false that at least 3 days fall in the same month. In this 2 days at most fall in the same month. In this case we calculate $2 x 14 = 24$, so at most 24 days fall in the same month. This is the contradiction that proves our assumption that no three no three days fall in the same month must be false, so the original conclusion is true.
+
+
+\item (3 pts)
+Use proof by contraposition to show that these statements about the integer $x$ are
+equivalent: (i) $3x + 2$ is even, (ii) $x + 5$ is odd, (iii) $x^2$
+is even.\\
+\\(i) "$3x + 2$ is even if and only if x is even". We will prove (i) with contraposition so if x is odd,$3x + 2$ is odd. Sub in $2k + 1$ for x. $3(2k - 1) +2 = 6k + 3 + 2 = 6k + 4 + 1= 2(3k + 2) +1$. We now have number $m = 3k + 2$, such that $3x + 2 = 2m + 1$ only if $3x + 2$ is an odd number. So the original hypothesis is proven this way.\\
+
+(ii) "$x + 5$ is odd if and only if x is even". The contraposition would be that $x + 5$ is even if and only if x is odd. Sub in 2k + 1 for x. $(2k - 1) + 5 = 2k - 1 + 5 = 2k + 4 = 2(k + 2)$. We now have number $m = k + 2$ such that $x + 5 = 2m$, only if x + 5 is an even number.\\
+
+(iii) "$x^2$ is even only if x is even". In this case the contraposition would be $x^2$ is odd if and only if x is odd. Sub in $2k - 1$ for x. $(2k - 1)^2 = (2k - 1)(2k - 1) = 4k^2 -4k + 1 = 2(2k^2 - 2k) + 1$. Now $m = 2k^2 - 2k$ such that $x^2 = 2k - 1$, so $x^2$ is an odd number.
+
+All the statements are true if and only if x is even.
+
+
+\item (3 pts) Show that the propositions $p_1, p_2, p_3, \; \textrm{and}\; p_4$ can be shown
+to be equivalent by showing that $p_1 \leftrightarrow p_4, p_2 \leftrightarrow p_3, \; \textrm{and} \;
+p_1 \leftrightarrow p_3.$\\
+\\$((p_1 \leftrightarrow p_4) \land (p_1 \leftrightarrow p_3)) \rightarrow (p_4 \leftrightarrow p_3)$
+\\$((p_2 \leftrightarrow p_3)\land (p_1 \leftrightarrow p_3)) \rightarrow (p_2 \leftrightarrow p_1)$
+\\$((p_2 \leftrightarrow p_1) \land (p_1 \leftrightarrow p_4)) \rightarrow (p_4 \leftrightarrow p_2)$
+\\$\therefore p_1 \leftrightarrow p_2 \leftrightarrow p_3 \leftrightarrow p_4$
+\\If $p_1$ and $p_4$, and $p_1$ and $p_3$ are equivalent, that means that $p_3$ and $p_4$ are equivalent since they are both equal to $p_1$. That just leaves $p_2$, since $p_2$ is equal to $p_3$ (and since $p_3$ is equal to both $p_1$ and $p_2$), then $p_2$ is equal to all of them. And therefore all these four elements are equivalent.
+
+\end{enumerate}
+\end{document} 

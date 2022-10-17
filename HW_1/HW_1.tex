@@ -1,0 +1,146 @@
+\documentclass[12pt]{article}
+\title{CISC 102 (Fall 20)\\ Homework \#1:Sets $\;$   (20 Points) }
+\author{Student Name/ID:. . . . . . . .}
+\date{}
+
+\usepackage[left=2cm, right=3cm, top=1cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}						% for \bm -- bold almost everywhere
+\usepackage{mdwlist}					% for {itemize*}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{relsize,etoolbox}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ab}[1]{\left[ #1 \right]}
+\newcommand{\rb}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pdif}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pdifm}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
+
+\renewcommand{\a}{\ensuremath{\mathcal{A}}}
+\renewcommand{\b}{\ensuremath{\mathcal{B}}}
+\newcommand{\bb}{\ensuremath{\mathbb{B}}}
+\newcommand{\ee}{\ensuremath{\mathbb{E}}}
+\newcommand{\f}{\ensuremath{\mathcal{F}}}
+\newcommand{\g}{\ensuremath{\mathcal{G}}}
+\newcommand{\h}{\ensuremath{\mathcal{H}}}
+\renewcommand{\l}{\ensuremath{\mathcal{L}}}
+\newcommand{\map}{\longrightarrow}
+\newcommand{\nn}{\ensuremath{\mathbb{N}}}
+\newcommand{\one}{\ensuremath{\mathbf{1}}}
+\newcommand{\p}{\ensuremath{\mathcal{P}}}
+\newcommand{\pp}{\ensuremath{\mathbb{P}}}
+\newcommand{\qq}{\ensuremath{\mathbb{Q}}}
+\newcommand{\rr}{\ensuremath{\mathbb{R}}}
+\newcommand{\zz}{\ensuremath{\mathbb{Z}}}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\newcommand{\var}{\mathrm{var}}
+
+\DeclareMathOperator{\argmax}{argmax}
+
+\begin{document}
+
+\maketitle
+
+\par\noindent Solutions are due before 11:59 PM on \textbf{Friday  Midnight September 25, 2020  }.
+
+
+\begin{enumerate}
+
+
+\item (3 pts) is the elements in the following sets:
+\begin{enumerate}
+	\item $\set{n\in\zz\vert n^2<7}$
+    \\The set would will contain only integers who's squares are less than 7. Therefore the set is $\set{-2,-1,0,1,2}$.
+    \\
+
+	\item $\set{x^2\vert x\in\nn_0\, \wedge\, x<5}$
+    \\This set will contain the squares of Natural numbers that are less than 5. Therefore the set will be $\set{0,1,4,9,16}$.
+
+
+	\item $\set{m\in\qq\vert m^2=7} $.
+    \\This set will contain the two rational numbers that when are squared equal 7. Therefore the set will be $\set{-\sqrt7,\sqrt7}$ or $\set{-2.645751311,2.645751311}$
+	
+\end{enumerate}
+
+\item  (3 pts) Let $A = \set{1,2,3}$ and $B=\set{1,3}$
+\begin{enumerate}
+\item  List the elements of \(A \times B \times A\)
+\\\(A \times B \times A\) =
+
+
+\{(1,1,1),(1,1,2),(1,1,3),(1,3,1),(1,3,2),(1,3,3),
+\\(2,1,1),(2,1,2),(2,1,3),(2,3,1),(2,3,2),(2,3,3),
+\\(3,1,1),(3,1,2),(3,1,3),(3,3,1),(3,3,2),(3,3,3)\}
+\\
+
+\item (3 pts) List the elements of \((A \times B) \cap (B \times A)\)
+\\\((A \times B) \cap (B \times A)\) = $\set{(1,1),(1,3),(3,1),(3,3)}$
+\\
+
+\item  List the elements of \((A \times A) \setminus (A \times B)\)
+\\\((A \times A) \setminus (A \times B)\) = $\set{(1,2),(2,2),(3,2)}$\\
+\end{enumerate}
+
+\cleardoublepage
+\item (3 pts) For the following sets decide whether they are finite or infinite. If the set is finite, write down its size.
+\begin{enumerate}
+	\item $\set{x\in\nn_0\vert x>10}$
+    \\The cardinality of this set is infinite since it is the collection of all natural numbers that are greater than 10. Therefore this set is infinite.
+    \\
+	\item $\set{x\in\nn_0\vert x\leq 10}$.
+    \\The cardinality of this set is finite. The elements it contains are
+    $\set{0,1,2,3,4,5,6,7,8,9,10}$ which add up to a size of 11.
+    \\
+	\item $\set{4,\set{4},\set{4,\set{4}}, \set{\nn}}$
+    \\The cardinality of this set is finite and its size is 4.\\
+
+\end{enumerate}
+
+\item (2 pts) Show that if $A,B,C$ are sets with $A\subseteq B$ and $B\subset C$ then $A\subset C$.
+    \\If $A\subseteq B$, then it is known that $\forall x(x \in A \implies x \in B)$. Then we see that $B\subset C$ ($B \neq C$), then it proves that $A\subset C$ since if all x that belong to A also belong to B, then we can conclude that $\forall x(x \in A \implies x \in C)$. So A is a proper subset of C.
+
+\item (4 pts) For each of the following statements about sets, decide whether they are true or false. Justify your assertion, either way.
+\begin{enumerate}
+	\item $\zz$ is finite
+    \\This statement is false since $\zz$  is the set of all integers from ($-\infty,\infty$). So therefore this statement is false since the set of $\zz$ contains an infinite number of elements.\\
+	\item $\set{\set{\zz}}$ is finite
+    \\This statement is true since this set has only one element, which is another set, which also contains the set of $\zz$ as its element. In this case we are only looking at how many elements the main set has, and not how many elements the other sets within this set contain, therefore the statement is true that this set is finite since it only contains one element.\\
+	\item $\set{x\in\qq\vert x^2=2}$ is finite.
+    This statement is true since this set can only have two elements (In this case rational numbers) which satisfy the $\set{x\in\qq\vert x^2=2}$. The set would look like $\set{-\sqrt2,\sqrt2}$ or $\set{-1.414213562,1.414213562}$. Therefore this set is finite with only two elements.\\
+	\item If $A$ is a finite set then $\abs{\p(A)}>\abs{A}$
+\\This statement is false. Since if A is a $\emptyset$, then its cardinality is equal to 0, and the cardinality of $\abs{\mathcal{P}(\emptyset)}$ is also equal to 0 since the only subset of a empty set is an empty set itself. So if $\abs{\mathcal{P}(\emptyset)} = 0$ and $\abs{\emptyset} = 0$ then the statement$\abs{\p(A)}>\abs{A}$ is false if a is an empty set. If set A was not an empty set then the condition/statement would be true, but as it is the statement is false.
+\end{enumerate}
+
+\item (2 pts) Let $A=\set{1,2,3,4}$. Write down $\p(A)$. What is $\abs{\p(A)}?$
+    \\$\abs{\p(A)} = 16$
+
+
+\item (3 pts)
+In a class of 65 students, 25 speak Spanish, 32 are excellent cooks, and 50 love dogs.  Each student is in at least one of these categories.\\
+There are 18 Spanish speakers who don't cook.
+There are 21 dog lovers who are excellent cooks.
+There are 4 cooks who speak Spanish and do not love dogs.
+Determine the number of students in the class in each of the following categories:
+\begin{enumerate}
+	\item Speak Spanish and love dogs
+    \\21
+	\item Love dogs and cannot cook
+    \\29
+	\item Speak Spanish, are excellent cooks, and love dogs
+    \\3
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document} 

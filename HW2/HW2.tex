@@ -1,0 +1,244 @@
+\documentclass[12pt]{article}
+\title{CISC 102 (Fall 20)\\ Homework \#2: Logic $\;$   (25 Points) }
+\author{Student Name/ID:. . . . . . . .}
+\date{}
+
+
+\usepackage[left=2cm, right=3cm, top=1cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}						% for \bm -- bold almost everywhere
+\usepackage{mdwlist}					% for {itemize*}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{relsize,etoolbox}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ab}[1]{\left[ #1 \right]}
+\newcommand{\rb}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pdif}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pdifm}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
+
+\renewcommand{\a}{\ensuremath{\mathcal{A}}}
+\renewcommand{\b}{\ensuremath{\mathcal{B}}}
+\newcommand{\bb}{\ensuremath{\mathbb{B}}}
+\newcommand{\ee}{\ensuremath{\mathbb{E}}}
+\newcommand{\f}{\ensuremath{\mathcal{F}}}
+\newcommand{\g}{\ensuremath{\mathcal{G}}}
+\newcommand{\h}{\ensuremath{\mathcal{H}}}
+\renewcommand{\l}{\ensuremath{\mathcal{L}}}
+\newcommand{\map}{\longrightarrow}
+\newcommand{\nn}{\ensuremath{\mathbb{N}}}
+\newcommand{\one}{\ensuremath{\mathbf{1}}}
+\newcommand{\p}{\ensuremath{\mathcal{P}}}
+\newcommand{\pp}{\ensuremath{\mathbb{P}}}
+\newcommand{\qq}{\ensuremath{\mathbb{Q}}}
+\newcommand{\rr}{\ensuremath{\mathbb{R}}}
+\newcommand{\zz}{\ensuremath{\mathbb{Z}}}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\newcommand{\var}{\mathrm{var}}
+
+\DeclareMathOperator{\argmax}{argmax}
+
+\begin{document}
+
+\maketitle
+
+\par\noindent Solutions are due before 11:59 PM on \textbf{Friday  Midnight October 4, 2020 }.
+
+
+\begin{enumerate}
+
+\item (4 pts)
+Let $p, q,$ and $r$ be the propositions\\
+$p$: You have the flu, $q$: You miss the final examination, and $r$: You pass the course. \\
+Express each of these propositions as an English sentence.
+\begin{enumerate}
+	\item 	$q \rightarrow  \neg r$
+    \\If you miss the final exam, you won't pass the course.
+	\item  $p \vee q \vee r$
+    \\You have the flue, or you missed the final examination, or you pass the course
+	\item $(p \rightarrow \neg r) \vee (q \rightarrow \neg r)$
+    \\You have the flu so you don't pass the course, or you miss the final examination and won't pass the course.
+	\item $(p \wedge q) \vee (\neg q \wedge r)$
+    \\You have the flu and miss the final examination or you don't miss the final examination and pass the course.
+\end{enumerate}	
+
+\item (2 pts)
+Write each of these statements in the form $\textrm{“if}\; p, \textrm{then}\; q”$
+in English.
+\begin{enumerate}
+	\item I will remember to send you the address only if you send me an e-mail message.
+\\If you send me an e-mail message, then I will remember to send you the address.\\
+	
+	\item The Red Wings will win the Stanley Cup if their 	goalie plays well.
+\\If the Red Wings goalie plays well, then they will win the Stanley Cup.
+\end{enumerate}
+
+\item (3 pts)
+State the converse, contrapositive, and inverse of each of
+these conditional statements.
+\begin{enumerate}
+
+\item If it snows tonight, then I will stay at home.
+\\Converse: If I stay home, then It will snow tonight.
+\\Contrapositive: If I don't stay home, it will not snow tonight
+\\Inverse: If it does not snow tonight, the I will not stay at home.\\
+
+\item I go to the beach whenever it is a sunny summer day.
+\\Converse: If it is a sunny summer day, then I will go to the beach
+\\Contrapositive: If it is not a sunny summer day, then I will not go to the beach.
+\\Inverse: I don't go to the beach whenever it is not a sunny summer day.\\
+
+\item When I stay up late, it is necessary that I sleep until noon.
+\\Converse: It is necessary that I sleep until noon, when I stay up late.
+\\Contrapositive: It is not necessary that I sleep until noon, When I do not stay up late.
+\\Inverse: When I don't stay up late, it is not necessary that I sleep until noon.
+\end{enumerate}
+
+
+\item (2 pts) Are the two logical expressions \(P \wedge \neg Q\) and \(\neg (\neg P \vee Q)\) logically equivalent? Answer this question using a truth table (or tables)
+    \begin{displaymath}
+    \begin{array}{|c|c|c|c|c|c|}
+    P & Q & \lnot Q & P \land \lnot Q & \lnot P & \lnot (\lnot P \lor Q)\\
+    \hline
+      T & T & F & F & F & F\\
+      T & F & T & T & F & T\\
+      F & T & F & F & T & F\\
+      F & F & T & F & T & F
+
+    \end{array}
+    \end{displaymath}
+    \\ $\therefore$ We can see that both $P \land \lnot Q$ and $\lnot (\lnot P \lor Q)$ are both logically equivalent.
+
+\item  (2 pts) Is \(\neg (P \rightarrow Q )\) logically equivalent to \(P \wedge \neg Q\)  ?
+    \begin{displaymath}
+    \begin{array}{|c|c|c|c|c|}
+    P & Q & \lnot (P \rightarrow Q) & \lnot Q & P \land \lnot Q\\
+    \hline
+      T & T & F & F & F\\
+      T & F & T & T & T\\
+      F & T & F & F & F\\
+      F & F & F & T & F
+
+    \end{array}
+    \end{displaymath}
+    \\or
+    \\ $\lnot (P \rightarrow Q) \equiv \lnot (\lnot P \lor Q)$
+    \\$\equiv \lnot(\lnot P) \land \lnot Q$
+    \\$\equiv P \land \lnot Q$
+    \\$\therefore$ We can see that both $\lnot (P \rightarrow Q)$ and $P \land \lnot Q$ are both logically equivalent.
+\item  (2 pts)
+\begin{enumerate}
+	\item  Prove that \(A \subseteq B \to A \cap \bar{B} = \emptyset\)
+\\$A \subseteq B \equiv \forall x (x \in A \rightarrow x \in B)$
+\\$\forall x (x \in A \rightarrow \lnot(x \in B))\equiv \forall x (x \in A \rightarrow x \not \in B)$
+\\$\forall x (x \in A \rightarrow x \not \in B) \equiv \forall x (x \in A \rightarrow x \in \bar{B})$ (Which is false)
+\\$\therefore \equiv \emptyset$
+
+or we can use the complement laws since $A \subseteq B \rightarrow A \cap \bar{B} = \emptyset$. Since all the values of A also belong to B, and the compliment of B are all the elements of x "outside of B", therefore there is not intersection between $A$  and $\bar{B}$. And that is why a $\emptyset$ is returned as the output.\\
+\item Prove that \(A \cap \bar{B} = \emptyset \to A \subseteq B\)
+    \\$A \cap \bar{B} \equiv \forall x (x \in A \rightarrow x \in \bar{B}) = \emptyset$
+    \\$\forall x (x \in A \rightarrow \lnot(x \in B) \equiv \forall x (x \in A \rightarrow x \not \in \bar{B})$
+    \\$\forall x (x \in A \rightarrow x \not \in \bar{B}) \equiv \forall x (x \in A \rightarrow x \in B)$
+    \\$\therefore A \cap \bar{B} = \emptyset \rightarrow A \subseteq B$ (We can also use the complement laws, also used in part(a), but this time we go backwards.
+
+\end{enumerate}
+
+\item  (2 pts)
+Show that $(p \rightarrow q) \vee (p \rightarrow r) $ and $p \rightarrow (q \vee r)$ are logically equivalent.
+\begin{displaymath}
+    \begin{array}{|c|c|c|c|c|}
+    p & q & r & (p \rightarrow q) \lor (p \rightarrow r) & p \rightarrow (q \lor r)\\
+    \hline
+      T & T & T & T & T\\
+      T & T & F & T & T\\
+      T & F & T & T & T\\
+      T & F & F & F & F\\
+      F & T & T & T & T\\
+      F & T & F & T & T\\
+      F & F & T & T & T\\
+      F & F & F & T & T
+
+    \end{array}
+    \end{displaymath}
+    \\We can also see if "p implies q,   or p implies r", then "p implies q or r"
+    \\$\therefore$ We can see that both $(p \rightarrow q) \lor (p \rightarrow r)$ and $p \rightarrow (q \lor r)$ are both logically equivalent.
+
+\item (3 pts)
+Translate in two ways each of these statements into logical
+expressions using predicates, quantifiers, and logical
+connectives. First, let the domain consist of the students
+in your class and second, let it consist of all people.
+\\S(x) = A student in the class
+\begin{enumerate}
+	\item There is a person in your class who cannot swim.
+    \\SW(x) = x can swim
+    \\1. (Students): $\exists x \lnot SW(x)$
+    \\2. (All People): $\exists x (S(x) \land \lnot SW(x)) $\\
+	\item All students in your class can solve quadratic equations.
+    \\EQ(x) = x can solve quadratic equations equation
+    \\1. (Students): $\forall x EQ(x)$
+    \\2. (All People): $\forall x (S(x) \land EQ(x))$\\
+	\item  Some student in your class does not want to be rich.
+    \\R(x) = x wants to be rich
+    \\1. (Students): $\exists x \lnot R(x)$
+    \\2. (All People): $\exists x (S(x) \land \lnot R(x))$\\
+\end{enumerate}
+
+\item (3 pts)
+Express the negations of these propositions using quantifiers,
+and in English.
+\begin{enumerate}
+	\item Every student in this class likes mathematics.
+    \\Original proposition: (M(x) = people who like math)
+     $\forall x M(x)$
+     \\Negation: $\exists x \lnot M(x)$
+     \\Negation in English: It is the case that not all students like mathematics.\\
+
+\item  There is a student in this class who has never seen a computer.
+    \\Original proposition: (C(x) = people who have seen a computer) $\exists x \lnot C(x)$
+    \\Negation:
+    \\$\lnot (\exists x \lnot C(x)) \equiv \forall x \lnot(\lnot (C(x))$
+    \\$\equiv \forall x C(x)$
+    \\Negation in English: All students in the class have seen a computer.\\
+
+\item There is a student in this class who has taken every
+mathematics course offered at this school.
+\\Original proposition: (MC(x) = people who have taken all math courses) $\exists x MC(x)$
+\\Negation: $\forall x \lnot MC(x)$
+\\Negation in English: All students in this class have not taken all the math courses offered.\\
+
+\end{enumerate}
+\item (2 pts)
+\begin{enumerate}
+	 \item Suppose that $Q(x)$ is the statement $x + 1 = 2x.$ What are the truth values of $\forall x Q(x)$ and $\exists x Q(x)$?
+\\For $\forall Q(x)$:
+\\The truth value for this statement will be false since not all values will allow $x + 1 = 2x$. Take for example x = 4; $4 + 1 = 2(4)$; $5 \neq 8$. $\therefore$ this statement is false since not all values of x satisfies the statement $x + 1 = 2x$.\\
+\\For $\exists Q(x)$:
+\\The truth value for this statement will be true since there is a value that exists that will satisfy the statement $x + 1 = 2x$. If we let x = 1; $1 + 1 = 2(1)$; 2 = 2. $\therefore$ This statement is True.
+	\\
+	\item Let $P(m, n)$ be "$n$ is greater than or equal to $m$" where the domain (universe of discourse) is the set of
+	nonnegative integers. What are the truth values of $\exists n \forall m P(m, n)$ and $\forall m\exists n  P(m, n)$?
+
+For $\exists n \forall m P(m, n)$:
+\\This equation returns FALSE. If we read it, it says "For some n, all m are such that P(m,n)". For some nonnegative integer n, there is any number m, such that $m < n$. This is false since there is no number n that is greater than all the numbers m.\\
+
+For $\forall m \exists n P(m, n)$:
+\\This equation returns TRUE. If we read it, it says "For all m, there is a n such that P(m,n)". For any nonnegative integer m, there is some n that $m < n$.
+
+
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document} 

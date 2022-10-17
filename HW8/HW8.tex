@@ -1,0 +1,175 @@
+
+\documentclass[12pt]{article}
+\title{CISC 102 (Fall 20)\\ Homework \#8: Counting $\;$   (24 Points) }
+\author{Student Name/ID:. . . . . . . .}
+\date{}
+
+
+\usepackage[left=2cm, right=3cm, top=1cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}						% for \bm -- bold almost everywhere
+\usepackage{mdwlist}					% for {itemize*}
+\usepackage{enumerate}
+\usepackage{xcolor,graphicx}
+\usepackage{relsize,etoolbox}
+\usepackage{tikz}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ab}[1]{\left[ #1 \right]}
+\newcommand{\rb}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pdif}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pdifm}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
+
+\renewcommand{\a}{\ensuremath{\mathcal{A}}}
+\renewcommand{\b}{\ensuremath{\mathcal{B}}}
+\newcommand{\bb}{\ensuremath{\mathbb{B}}}
+\newcommand{\ee}{\ensuremath{\mathbb{E}}}
+\newcommand{\f}{\ensuremath{\mathcal{F}}}
+\newcommand{\g}{\ensuremath{\mathcal{G}}}
+\newcommand{\h}{\ensuremath{\mathcal{H}}}
+\renewcommand{\l}{\ensuremath{\mathcal{L}}}
+\newcommand{\map}{\longrightarrow}
+\newcommand{\nn}{\ensuremath{\mathbb{N}}}
+\newcommand{\one}{\ensuremath{\mathbf{1}}}
+\newcommand{\p}{\ensuremath{\mathcal{P}}}
+\newcommand{\pp}{\ensuremath{\mathbb{P}}}
+\newcommand{\qq}{\ensuremath{\mathbb{Q}}}
+\newcommand{\rr}{\ensuremath{\mathbb{R}}}
+\newcommand{\zz}{\ensuremath{\mathbb{Z}}}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\newcommand{\var}{\mathrm{var}}
+
+\DeclareMathOperator{\argmax}{argmax}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item (2 pts) \\
+How many ways are there to select a 5 card poker hand from a standard deck of 52 cards, such that none of the cards are clubs?\\
+\\We know that clubs make up $\frac{1}{4}$ of the deck, so there are $52\times \frac{3}{4}=39$ cards that are not clubs.
+\\$C(39,5)= \frac{39!}{5!34!} = 575757$
+\\$\therefore$ there are 575757 ways to select a 5 poker hand such that none of the cards are clubs.
+
+\item (2pts) \\
+How many ways are there to select a 5 card poker hand  from a standard deck of 52 cards, such that at least one of the cards is a club?\\
+\\In this example we know that we have 13 clubs to choose from, and there are still 39 remaining that are not clubs so we have
+\\$13 \times \binom{39}{4}$
+\\For a hand involving $i$ clubs we have $\binom{13}{i} \times \binom{39}{5-i}$
+\\$\sum_{5}^{i} \binom{13}{i} \times \binom{39}{5-i}$ (in the next step calculating directly)
+\\=$\binom{52}{5} - \binom{39}{5} = \frac{52!}{5!47!} - \frac{39!}{5!34!} = 2023203$
+\\$\therefore$ there are 2023203 ways to choose a hand of 5 cards with at least one club in it.
+
+\item (6 pts)\\
+You are planning a dinner party and want to choose 5 people to attend from a list of 11 close personal friends.
+\begin{enumerate}
+	\item In how many ways can you select the 5 people to invite.\\
+    \\There are $\frac{11!}{5!6!} = 462$ ways of choosing 5 people to invite.
+		
+	\item Suppose two of your friends are a couple and will not attend unless the other is invited. How many different ways can you invite 5 people under these constraints?\\
+    \\In this example, we have two cases, one where we invite the couple and choose 3 friends of 9 which we can do with $\binom{9}{3}$ ways. The second case is we don't invite the couple and choose 5 friends out of the 9 remaining which we can do in $\binom{9}{5}$ ways. So we have:
+    \\$\binom{9}{3} + \binom{9}{5} = 210$
+    \\$\therefore$ there are 210 ways to choose who to invite when two of the friends are a couple and won't go if the other is not invited.
+
+	\item Suppose two of your friends are enemies, and will not attend unless the other is not invited. How many different ways can you invite 5 people under these constraints?\\
+    \\We know that we have a total of $\binom{11}{5} = \frac{11}{5!6!} = 462$ ways to form invitations. The number of invitations that contain the enemies is $\binom{9}{3} = \frac{9!}{3!6!} = 84$. So know we know that there are $462 - 84 = 378$ possible invitations to not include the enemies.
+\end{enumerate}
+
+
+\item (2 pts) \\
+	Prove that for \(n \geq 2,   \ 2 \cdot \binom{n}{2} + \binom{n}{1}=n^{2}\)\\
+    \\Proving through induction:
+    \\Basis Step:
+    \\$P(2)$ holds since $2 \times \binom{2}{2} + \binom{2}{1} = 2^2$
+    \\$\rightarrow 2 \times \frac{2!}{2!0!} + \frac{2!}{1!1!} = 4$
+    \\$\rightarrow 2 + 2 = 4 \rightarrow 4 = 4$
+    \\$\therefore P(2)$ holds so basis step complete.
+    \\Inductive step:
+    \\Inductive hypothesis that $P(k)$ is true for integers equal or greater than 2, so our statement is $2 \times \binom{k}{2} + \binom{k}{1} = k^2$. If $P(k)$ is true, then $P(k+1)$ must also be true.
+    \\$\rightarrow 2 \times \binom{k+1}{2} + \binom{k+1}{1} = (k+1)^2$
+    \\$\rightarrow 2 \times \frac{(k+1)!}{2!(k-1)!} + \frac{(k+1)!}{1!k!} = k^2$
+    \\$\rightarrow \frac{(k+1)(k)(k-1)!}{(k-1)!} + \frac{(k+1)k!}{k!} = k^2 + 2k + 1$
+    \\$\rightarrow k(k+1) + (k+ 1) = k^2 + 2k + 1$
+    \\$\rightarrow k^2 + 2k + 1 = k^2 + 2k + 1$
+    \\$\therefore$ This shows that if the hypothesis $P(k)$ is true then $P(k+1)$ must also be true.
+    \\This shows since the basis and inductive steps have been completed, so $P(n)$ is true for all values of $n$ such that it is greater or equal to 2. $\therefore n \geq 2,   \ 2 \cdot \binom{n}{2} + \binom{n}{1}=n^{2}$ is indeed true.
+
+
+\item (2 pts)\\
+Let \(S = \lbrace1,2,3,...n\rbrace\) where {\it  n }  is even. What is the relationship between the number of subsets {\it  S }  of with odd cardinality, and the number of subsets of {\it  S }  with even cardinality. \\
+Explain your answer.
+\leavevmode\\\relax
+Hint: Each subset either contains the element 1 or it doesn't. Consider all the subsets that do not contain the element 1. Some of these have odd cardinality and some have even cardinality. What happens when you include the element 1 in each of these subsets?\\
+\\Let subsets of $S$ be $s$
+\\A subset $s \subseteq S$ with an even number of elements is determined by its intersection with $\{x_1,...,n\}$: if the intersection has an even number of elements then $x_n \notin S$, and if it has an odd number of elements $x_n \in S$. $\therefore$ the number of subsets of S with an even number of elements is equal to the number of subsets of odd elements is $2^{n-1}$
+
+
+
+
+\item (2 pts)
+Lotto 6/49 lets you pay \$3 for the thrill of choosing six different numbers from the set \(\lbrace1,2,3, \dots 49  \rbrace\).   Rumour has it that there may (on extremely rare occasions) be other benefits to buying a lottery ticket.\\
+How many ways are there to choose the six numbers?  Work out the exact value.\\
+\\There are $\binom{49}{6} = \frac{49!}{6!(49-6)!} = 13983816$ ways of choosing 6 numbers from the set of 49 available.
+
+
+\item (2 pts) \\
+Prove that \[\sum_{i=1}^{n} \binom{i}{2}= \binom{n+1}{3} \quad \forall \thinspace n \geq 2\]\\
+\\Proving through induction:
+\\Basis step:
+\\$\sum_{i=1}^{2} \binom{i}{2}= \binom{2+1}{3}$
+\\$P(2)$ holds since, $\rightarrow \binom{1}{2} + \binom{2}{2}= \binom{3}{3} \rightarrow 0 + \frac{2!}{2!0!}=\frac{3!}{3!0!} \rightarrow 1 = 1$
+\\$\therefore P(2)$ holds so basis step complete.
+\\Inductive step:
+\\The inductive hypothesis is that $P(k)$ holds for any value of $k$ greater or equal to 2, so $\sum_{i=1}^{k} \binom{i}{2}= \binom{k+1}{3}$. If $P(k)$ is true, then $P(k+1)$ must also be true. To show that, add $\binom{k+1}{2}$ to both sides.
+\\$\binom{1}{2} + \binom{2}{2}+...+\binom{k}{2} + \binom{k+1}{2}=\binom{k+1}{3}+ \binom{k+1}{2}$
+\\$\rightarrow \binom{1}{2} + ... +\binom{k}{2}  + \binom{k+1}{2} = \binom{k+1}{3} + \binom{k+1}{2}$
+\\$\rightarrow \binom{k+1}{3} + \binom{k+1}{2} = \binom{k+2}{3}$ (We get this from pascals identity)
+\\$\therefore$this shows that if $P(k)$ is true, then $P(k+1)$ must also be true. Since both the basis step and the inductive step have been completed, $P(n)$ must be true for all values of $n$ that are equal to or greater than 2. $\therefore \sum_{i=1}^{n} \binom{i}{2}= \binom{n+1}{3} \quad \forall \thinspace n \geq 2$ is true.
+
+
+\item (2 pts) \\ What is the number of ways to colour $n$ different objects, one colour per object with 2 colours? What is the number of ways to colour $n$ different objects with 2 colours, so that each colour is used at least once.\\
+    \\The number of ways to color $n$ objects with 3 colors is $3^n$, and now we subtract the colorings which did not use any of the three colors. The number of ways to color with just 2 colors is $2^n$ and since there are three colors that can be used we have $3^n - 3(2)^n$ but he have now removed all colorings with a given color twice so we now need to add those back again and we get $3^n - 3(2)^n + 3$. $\therefore$ The number of ways to color $n$ different objects with 2 colors, so each is used once is $3^n - 3(2)^n + 3$.
+
+\item (2pts)\\
+Prove that
+
+$$
+{n \choose 0} - { n \choose 1} + {n \choose 2} - {n \choose 3} + \cdots  + (-1)^n{n \choose n} = 0
+$$
+
+Note that this equation can also be written as follows:
+
+$$
+\sum_{i=0}^n {n \choose i}(-1^{i}) = 0
+$$
+HINT: This can be viewed as a special case of the binomial theorem.\\
+\\Using binomial theorem with $x=-1$ and $y=1$.
+\\We se that $0=0^n=((-1)+1)^n = \sum_{i=0}^{n} \binom{n}{i}(-1)^{i}1^{n-i}$
+\\$=\sum_{i=0}^{n} \binom{n}{i}(-1)^i$
+\\$\therefore$ we see that $0=\sum_{i=0}^{n} \binom{n}{i}(-1)^i$
+
+
+
+
+\item (2 pts)\\
+ A class of 100 students must select  2 safety officers per week for 7 weeks. There are no constraints on how the selection is made, and the same student can be selected more that once. In how many ways can this selection be made?\\
+ \\Selecting the safety officer can be represented using $\binom{100}{2} = 4950$ can be represented in a week, but since it happens once a week so we multiply 4950 by 7 and we get $4950 \times 7 = 34650$ ways. $\therefore$ there are 34650 ways of choosing 2 safety officers from a group of 100 students for 7 weeks.
+
+\
+\end{enumerate}
+
+
+\vfill
+\end{document}
