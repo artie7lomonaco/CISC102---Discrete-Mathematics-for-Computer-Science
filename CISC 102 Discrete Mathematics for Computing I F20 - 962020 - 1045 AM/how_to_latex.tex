@@ -1,0 +1,67 @@
+\documentclass[12pt, answers]{exam}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools, amssymb, amsthm}
+\pagestyle{plain}
+
+% \newtheorem{problem}{Problem}
+% \theoremstyle{definition}
+% \newtheorem*{solution}{Solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LEAVE EVERYTHING ABOVE THIS LINE ALONE!!! %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[colorlinks]{hyperref} % you can delete this when you write your documents...
+
+\title{\LaTeX{} Example Document}  % your title goes here
+\author{Chris Eppolito}            % your name goes here
+\date{15 March 2020}               % the date goes here
+
+\begin{document}
+\maketitle     % leave this alone
+\doublespacing % leave this alone
+
+This is a sample document to show you how to use \LaTeX{} to write nice documents for your homework submission.  I have built the document to get you started.
+
+Notice that the text is double-spaced.  This is on purpose!  I expect you to submit the PDF file to me so I can mark it with comments and return it to you.
+
+\begin{questions}
+
+\question This is a problem.  It deserves to be stated properly, and then solved below!
+
+Once you have stated a problem, you can solve it below using the \verb@solution@ environment.
+
+\begin{solution}
+This is my solution to the first question.  When I write maths, I always enclose it between \verb@\( CONTENTS \)@.  This way \LaTeX{} knows I mean to write in-line maths.  Something like \(e^{i\pi} + 1 = 0\) is in-line maths.
+
+To write display-style maths, I enclose it between \verb@\[ CONTENTS \]@.  This way \LaTeX{} knows I mean to write display-style maths.  Something like \[e^{i\pi} + 1 = 0\] is display-style maths.
+
+For multi-line display-style maths, you will need to make friends with \verb@align*@.  This environment uses the symbol \verb@&@ for alignment, and uses \verb@\\@ for line-breaks.  Have a look at the code for the following to see what I mean.
+\begin{align*}
+    S &= \{n \in \mathbb{N} : n + 5 \leq 50\} \\
+    &= \{n \in \mathbb{N} : n \leq 45\} \\
+    &= \{n \in \mathbb{Z} : 0 \leq n \leq 45\}
+\end{align*}
+Notice that the symbols \verb@\@ and \verb@{@ and \verb@}@ are special in \LaTeX{}.  Every command begins with a \verb@\@, and the \texttt{.tex} file won't compile if you have unbalanced braces because they are used to determine limited scopes.  To get the \(\backslash\) for set difference, type \verb@\setminus@, and to get the braces for sets, type \verb@\{@ and \verb@\}@.
+
+Some commands only make sense in math-mode (i.e.~in one of the \verb@\(\)@, \verb@\[\]@, or \verb@\begin{align*}\end{align*}@ environments).  To make subscripts use an underscore \verb@_@, and to make superscripts use a caret \verb@^@.  These are treated differently depending on the math-mode!  The command \verb@\sum_{k = 0}^{n} \binom{n}{k} = 2^n@ looks like \(\sum_{k = 0}^{n} \binom{n}{k} = 2^n\) in-line, but like so in display-style.
+\[
+\sum_{k = 0}^{n} \binom{n}{k} = 2^n
+\]
+
+To end your proofs with a tombstone (like I do in class), write \verb@\qed@ at the end.\qed
+\end{solution}
+
+\end{questions}
+
+Using \href{https://www.overleaf.com/}{Overleaf} makes writing \LaTeX{} fairly straightforward.  It comes with many helpful features.  If you run into problems, search on Overleaf for the answer.
+
+Using \href{http://detexify.kirelabs.org/classify.html}{Detexify} is good for finding symbols (e.g.~\(\gamma\) or an \(\alpha\)).  There you just handwrite the symbol you want, and the site pattern-matches your symbol to find the command.
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
